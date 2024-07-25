@@ -6,25 +6,6 @@
     <title>Burger King AR Experience</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-    <script>
-        AFRAME.registerComponent('play-sound-and-animation', {
-            init: function () {
-                const marker = this.el;
-                const model = marker.querySelector('[gltf-model]');
-                const sound = document.querySelector('#burgerSound');
-
-                marker.addEventListener('markerFound', function () {
-                    model.emit('model-loaded');
-                    sound.play();
-                });
-
-                marker.addEventListener('markerLost', function () {
-                    sound.pause();
-                    sound.currentTime = 0;
-                });
-            }
-        });
-    </script>
     <style>
         .a-enter-vr, .a-enter-ar {
             display: none;
@@ -38,16 +19,11 @@
         vr-mode-ui="enabled: false"
         renderer="logarithmicDepthBuffer: true; precision: medium;"
     >
-        <a-assets>
-            <audio id="burgerSound" src="burger_sound.mp3" preload="auto"></audio>
-        </a-assets>
-
-        <a-marker type="pattern" url="pattern-bk.patt" play-sound-and-animation>
+        <a-marker type="pattern" url="pattern-bk.patt">
             <a-entity 
                 position="0 0 0" 
                 scale="0.05 0.05 0.05" 
-                gltf-model="burger.obj"
-                animation-mixer>
+                obj-model="obj: url(burger.obj)">
             </a-entity>
         </a-marker>
 
