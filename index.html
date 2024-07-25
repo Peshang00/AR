@@ -13,8 +13,13 @@
 </head>
 <body>
     <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: true;'>
-        <a-marker preset="hiro">
+        <a-marker type="pattern" url="pattern-bk.patt">
             <a-box position="0 0.5 0" color="red" scale="0.5 0.5 0.5"></a-box>
+            <a-entity 
+                position="0 1 0" 
+                scale="0.1 0.1 0.1" 
+                obj-model="obj: url(burger.obj)">
+            </a-entity>
         </a-marker>
         <a-entity camera></a-entity>
     </a-scene>
